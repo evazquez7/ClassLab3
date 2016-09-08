@@ -6,29 +6,33 @@
 package model;
 
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
  * @author Emilio
  */
 public class WelcomeService {
-    private Calendar currentTime = Calendar.getInstance();
-    private String timeOfDay;
-    private String MORNING = "Goodmorning";
-    private String NOON = "Afternoon";
-    private String NIGHT = "Goodnight";
+    private Calendar calendar = Calendar.getInstance();
+    private Date date = new Date();
     
-     
-    private int beforeNoon = 12;
+    private String timeOfDayMessage;
     
+    public String getWelcomeMessage(String name){
+        return "Good " + getTimeOfDay() + ", " + name + ". Welcome!";
+    }
     
     public String getTimeOfDay(){
         
-        if (currentTime.before() > ){
-            
+        if (calendar.get(Calendar.HOUR_OF_DAY) < 12 ){
+            timeOfDayMessage = "morning";
+        } else if (calendar.get(Calendar.HOUR_OF_DAY) > 18) {
+            timeOfDayMessage = "noon";
+        } else {
+            timeOfDayMessage = "evening";
         }
         
-        return 
+        return timeOfDayMessage;
     }
     
 }
